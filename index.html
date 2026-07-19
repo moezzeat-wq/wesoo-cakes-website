@@ -1,76 +1,521 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeSoo Cakes</title>
+/* =========================================
+   WeSoo Cakes - Advanced Main Style
+========================================= */
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+/* --- الإعدادات العامة للموقع --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Cairo', sans-serif;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+:root {
+    --primary-color: #d88ba1;
+    --primary-dark: #cf7a92;
+    --text-dark: #5d4037;
+    --text-muted: #7d665e;
+    --bg-light: #fffaf8;
+    --bg-pink: #fff3f6;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
 
-<header>
-    <nav class="navbar">
-        <!-- يمكنك استبدال النص بلوجو الصورة الخاص بك -->
-        <div class="logo-container">
-            <img src="images/logo.png" alt="WeSoo Cakes Logo" class="logo">
-        </div>
-        <div class="menu">
-            <a href="#">الرئيسية</a>
-            <a href="#gallery">أعمالنا</a>
-            <a href="#about">من نحن</a>
-            <a href="#contact">تواصل معنا</a>
-        </div>
-    </nav>
-</header>
+body {
+    background: var(--bg-light);
+    color: #333;
+    padding-top: 80px;
+    overflow-x: hidden;
+}
 
-<!-- قسم الهيرو (الواجهة الرئيسية) -->
-<section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-        <h1>🎂 Welcome To WeSoo Cakes</h1>
-        <p>
-            نصنع كيكات مميزة لكل المناسبات بخامات عالية الجودة ولمسة فنية تجعل كل مناسبة أجمل.
-        </p>
-        <div class="buttons">
-            <a href="https://wa.me/201097990107" target="_blank" class="btn">اطلب الآن</a>
-            <a href="#gallery" class="btn2">شاهد أعمالنا</a>
-        </div>
-    </div>
-</section>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-<!-- قسم أعمالنا (المعرض) -->
-<section id="gallery" class="section">
-    <h2>🎨 معرض أعمالنا</h2>
-    <div class="gallery-grid">
-        <div class="gallery-item"><img src="images/cake1.jpg" alt="كيك مناسبات"></div>
-        <div class="gallery-item"><img src="images/cake2.jpg" alt="كيك زفاف"></div>
-        <div class="gallery-item"><img src="images/cake3.jpg" alt="كبير كب كيك"></div>
-    </div>
-</section>
+/* --- القائمة العلوية (Header & Navbar) --- */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: var(--white);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
+    transition: var(--transition);
+}
 
-<!-- قسم من نحن -->
-<section id="about" class="section bg-light">
-    <h2>✨ من نحن</h2>
-    <p class="about-text">
-        نحن في <strong>WeSoo Cakes</strong> نؤمن أن الكيك ليس مجرد حلوى، بل هو شريك فرحتكم في كل مناسبة. نتميز بدقة التفاصيل واختيار أفضل المكونات الطازجة لنقدم لكم تجربة تذوق لا تُنسى.
-    </p>
-</section>
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
 
-<!-- قسم تواصل معنا -->
-<section id="contact" class="section">
-    <h2>📞 تواصل معنا</h2>
-    <p>يسعدنا استقبال طلباتكم واستفساراتكم مباشرة عبر الواتساب</p>
-    <a href="https://wa.me/201097990107" target="_blank" class="whatsapp-contact-btn">💬 راسلنا على الواتساب الآن</a>
-</section>
+.logo {
+    width: 120px;
+    height: auto;
+    display: block;
+}
 
-<footer>
-    <p>&copy; 2026 WeSoo Cakes. جميع الحقوق محفوظة.</p>
-</footer>
+.menu {
+    display: flex;
+    gap: 25px;
+}
 
-</body>
-</html>
+.menu a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.menu a:hover {
+    color: var(--primary-color);
+}
+
+/* --- قسم الواجهة الرئيسي البانورامي (Hero Slider) --- */
+.hero {
+    height: calc(85vh - 80px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.65);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    width: 90%;
+    max-width: 750px;
+}
+
+.hero-logo {
+    width: 140px;
+    margin-bottom: 15px;
+    animation: bounce 3s infinite ease-in-out;
+}
+
+.hero h1 {
+    font-size: 42px;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* --- الأزرار الأساسية --- */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(216, 139, 161, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    background: var(--primary-dark);
+    box-shadow: 0 6px 20px rgba(216, 139, 161, 0.4);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(216, 139, 161, 0.2);
+}
+
+/* --- العناوين المشتركة للأقسام --- */
+.section {
+    padding: 80px 0;
+    scroll-margin-top: 80px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title span {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.section-title p {
+    color: var(--text-muted);
+    font-size: 17px;
+}
+
+/* --- معرض الأعمال (Gallery Grid) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .05);
+    background: var(--white);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+/* --- قسم من نحن (About Section) --- */
+.about-section {
+    background: var(--bg-pink);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    display: block;
+}
+
+.small-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.about-content h2 {
+    font-size: 36px;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.about-content p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* شبكة المميزات */
+.features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.feature-card span {
+    font-size: 28px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+/* --- أزرار التواصل بصفحة الاتصال --- */
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    min-width: 160px;
+    transition: var(--transition);
+}
+
+/* ألوان الهويات للمنصات */
+.contact-btn.whatsapp { background: #25D366; }
+.contact-btn.whatsapp:hover { background: #20ba5a; transform: translateY(-3px); }
+
+.contact-btn.call { background: #007bff; }
+.contact-btn.call:hover { background: #0069d9; transform: translateY(-3px); }
+
+.contact-btn.tiktok { background: #000000; }
+.contact-btn.tiktok:hover { background: #1a1a1a; transform: translateY(-3px); }
+
+.contact-btn.facebook { background: #1877F2; }
+.contact-btn.facebook:hover { background: #145dbf; transform: translateY(-3px); }
+
+/* --- الفوتر (Footer) --- */
+.footer {
+    background: var(--text-dark);
+    color: var(--white);
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo {
+    width: 100px;
+    margin-bottom: 10px;
+    filter: brightness(0) invert(1); /* يجعل اللوجو بلون أبيض متناسق */
+}
+
+.footer p {
+    font-size: 16px;
+    color: #e0d6d3;
+}
+
+.footer .copyright {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bfaea9;
+    border-top: 1px solid #75554b;
+    padding-top: 20px;
+    width: 100%;
+}
+
+/* --- الأزرار العائمة (Floating Contact) --- */
+.floating-contact {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* يسار الشاشة لعدم حجب محتوى القراءة العربي اليمني */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+}
+
+.float-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: var(--transition);
+}
+
+.float-btn.whatsapp { background: #25D366; }
+.float-btn.call { background: #007bff; }
+.float-btn.tiktok { background: #000000; }
+.float-btn.facebook { background: #1877F2; }
+
+.float-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+}
+
+/* تحريك لوجو الهيرو بنعومة */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+/* =========================================
+   WeSoo Cakes - Script Execution
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. تشغيل السلايدر التلقائي لقسم الـ Hero
+    const slides = document.querySelectorAll(".hero-slider .slide");
+    let currentSlideIndex = 0;
+    const slideIntervalTime = 4000; // وقت التبديل (4 ثوانٍ)
+
+    const nextSlide = () => {
+        // إزالة الفئة النشطة من السلايد الحالي
+        slides[currentSlideIndex].classList.remove("active");
+        
+        // الانتقال للسلايد التالي وتصفير العداد عند الوصول للنهاية
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        
+        // إضافة الفئة النشطة للسلايد الجديد
+        slides[currentSlideIndex].classList.add("active");
+    };
+
+    // تشغيل التبديل التلقائي إذا كانت السلايدات موجودة في الصفحة
+    if (slides.length > 0) {
+        setInterval(nextSlide, slideIntervalTime);
+    }
+
+    // 2. التحكم في تأثيرات الهيدر عند تمرير الشاشة للأسفل
+    const header = document.querySelector(".header");
+    
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 60) {
+            header.style.padding = "5px 0";
+            header.style.boxShadow = "0 8px 30px rgba(0, 0, 0, 0.08)";
+        } else {
+            header.style.padding = "15px 0";
+            header.style.boxShadow = "0 5px 20px rgba(0, 0, 0, .05)";
+        }
+    });
+
+    // 3. معالجة الانتقال الانسيابي للأقسام الداخلية بدقة متناهية
+    const navigationLinks = document.querySelectorAll('.menu a, .btn-outline, a[href^="#"]');
+    
+    navigationLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            
+            if (targetId && targetId.startsWith('#') && targetId !== '#') {
+                e.preventDefault();
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const headerHeight = header.offsetHeight;
+                    // حساب المسافة الدقيقة للوصول للقسم بدون الاختفاء تحت الهيدر الثابت
+                    const destinationY = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: destinationY,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+});
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .features {
+        grid-template-columns: 1fr;
+    }
+    .hero h1 {
+        font-size: 30px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    .floating-contact {
+        bottom: 20px;
+        left: 20px;
+    }
+}
