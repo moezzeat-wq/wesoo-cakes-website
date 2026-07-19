@@ -1,1 +1,226 @@
+/* =========================================
+   WeSoo Cakes - Main Style
+========================================= */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background: #fffaf8;
+    color: #333;
+    padding-top: 80px; /* لمنع تداخل القائمة الثابتة مع محتوى الموقع */
+}
+
+/* --- القائمة العلوية (Navbar) --- */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.logo {
+    width: 130px;
+    height: auto;
+    display: block;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #444;
+    font-weight: bold;
+    transition: color .3s ease;
+}
+
+.menu a:hover {
+    color: #d88ba1;
+}
+
+/* --- الواجهة الرئيسية (Hero) --- */
+.hero {
+    height: calc(100vh - 80px); /* موازنة الارتفاع بعد إضافة padding للـ body */
+    background: url("../images/hero.jpg") center center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    color: #5d4037;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    color: #4a3b32;
+}
+
+/* --- الأزرار (Buttons) --- */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 40px;
+    background: #d88ba1;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(216, 139, 161, 0.3);
+    transition: all .3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(216, 139, 161, 0.5);
+    background: #cf7a92;
+}
+
+.btn2 {
+    padding: 15px 40px;
+    border: 2px solid #d88ba1;
+    color: #d88ba1;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all .3s ease;
+}
+
+.btn2:hover {
+    background: #d88ba1;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(216, 139, 161, 0.3);
+}
+
+/* --- الأقسام العامة (Sections) --- */
+.section {
+    padding: 80px 8%;
+    scroll-margin-top: 80px; /* تضمن عدم اختفاء عنوان القسم تحت الهيدر عند الانتقال الانسيابي */
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #5d4037;
+    position: relative;
+}
+
+/* --- معرض الأعمال (Gallery) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+    background: #white;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 320px; /* تحديد ارتفاع موحد للصور للحفاظ على تناسق الشبكة */
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+/* --- من نحن (About) --- */
+.bg-light {
+    background: #fff3f6;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    font-size: 19px;
+    line-height: 1.9;
+    color: #555;
+}
+
+/* --- تواصل معنا (Contact) --- */
+#contact {
+    text-align: center; /* لتوسيط النص وزر الواتساب تلقائياً */
+}
+
+.whatsapp-contact-btn {
+    display: inline-block;
+    margin-top: 25px;
+    background: #25D366;
+    color: white;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    transition: all .3s ease;
+}
+
+.whatsapp-contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    background: #20ba5a;
+}
+
+/* --- الفوتر (Footer) --- */
+footer {
+    background: #5d4037;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 15px;
+}
