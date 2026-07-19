@@ -1,295 +1,431 @@
-/* =========================================
-   WeSoo Cakes - Main Style
-========================================= */
+/* ===================================
+   WeSoo Cakes Premium Website
+   Part 1
+=================================== */
+
+/* Reset */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    scroll-behavior:smooth;
-    font-family:'Cairo',sans-serif;
 }
 
-:root{
-    --primary:#d88ba1;
-    --primary-dark:#c96f88;
-    --text:#5d4037;
-    --bg:#fffaf8;
-    --white:#ffffff;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:var(--bg);
+
+    font-family:'Cairo',sans-serif;
+
+    background:#fffaf8;
+
     color:#333;
+
     overflow-x:hidden;
-    padding-top:90px;
+
 }
 
-/* Navbar */
+/* Colors */
+
+:root{
+
+    --primary:#d88ba1;
+
+    --secondary:#fff3f6;
+
+    --dark:#5d4037;
+
+    --white:#ffffff;
+
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+/* Container */
+
+.container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
+/* ===================================
+   Header & Navbar
+=================================== */
 
 header{
+
     position:fixed;
+
     top:0;
+
     left:0;
+
     width:100%;
-    background:#fff;
+
+    background:rgba(255,255,255,.95);
+
+    backdrop-filter:blur(10px);
+
     z-index:999;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    box-shadow:var(--shadow);
+
+    transition:.4s;
+
 }
 
 .navbar{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
+
+    height:85px;
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
-    padding:15px 0;
+
 }
 
 .logo{
+
     width:120px;
+
+    transition:.4s;
+
+}
+
+.logo:hover{
+
+    transform:scale(1.05);
+
 }
 
 .menu{
+
     display:flex;
-    gap:25px;
+
+    align-items:center;
+
+    gap:30px;
+
 }
 
 .menu a{
+
     text-decoration:none;
-    color:#444;
+
+    color:var(--dark);
+
+    font-size:17px;
+
     font-weight:700;
+
+    position:relative;
+
     transition:.3s;
+
+}
+
+.menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:3px;
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+    transition:.3s;
+
 }
 
 .menu a:hover{
+
     color:var(--primary);
+
 }
 
-/* Hero */
+.menu a:hover::after{
+
+    width:100%;
+
+}
+/* ===================================
+   Hero Section Premium
+=================================== */
 
 .hero{
-    height:90vh;
-    position:relative;
-    overflow:hidden;
+
+    min-height:100vh;
+
     display:flex;
-    justify-content:center;
+
     align-items:center;
-}
 
-.hero-slider{
-    position:absolute;
-    width:100%;
-    height:100%;
-}
+    justify-content:center;
 
-.slide{
-    position:absolute;
-    width:100%;
-    height:100%;
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding-top:85px;
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(0,0,0,.75),
+
+    rgba(0,0,0,.35)
+
+    ),
+
+    url("../images/hero-bg.jpg");
+
     background-size:cover;
+
     background-position:center;
-    opacity:0;
-    transition:1s;
+
 }
 
-.slide.active{
-    opacity:1;
-}
 
-.hero-overlay{
+/* حركة الخلفية */
+
+.hero::before{
+
+    content:"";
+
     position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(255,255,255,.55);
+
+    width:600px;
+
+    height:600px;
+
+    background:var(--primary);
+
+    opacity:.15;
+
+    filter:blur(120px);
+
+    border-radius:50%;
+
+    animation:moveGlow 8s infinite alternate;
+
 }
+
+
+@keyframes moveGlow{
+
+    from{
+
+        transform:translate(-150px,-100px);
+
+    }
+
+    to{
+
+        transform:translate(150px,100px);
+
+    }
+
+}
+
+
+/* محتوى الهيرو */
 
 .hero-content{
+
     position:relative;
+
     z-index:2;
-    text-align:center;
-    width:90%;
-    max-width:700px;
+
+    max-width:850px;
+
+    color:white;
+
 }
+
 
 .hero-logo{
-    width:150px;
-    margin-bottom:20px;
+
+    width:180px;
+
+    margin-bottom:25px;
+
+    animation:float 4s infinite ease-in-out;
+
 }
+
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
 
 .hero h1{
-    font-size:48px;
-    color:var(--text);
+
+    font-size:55px;
+
+    font-weight:900;
+
+    line-height:1.2;
+
     margin-bottom:20px;
+
 }
+
+
+.hero h1 span{
+
+    color:var(--primary);
+
+}
+
 
 .hero p{
+
     font-size:20px;
-    line-height:2;
+
+    line-height:1.8;
+
+    opacity:.9;
+
     margin-bottom:35px;
+
 }
+
+
+/* الأزرار */
 
 .hero-buttons{
+
     display:flex;
+
     justify-content:center;
-    gap:15px;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
 }
+
 
 .btn{
+
+    display:inline-block;
+
     padding:15px 35px;
+
     border-radius:50px;
+
     text-decoration:none;
-    font-weight:bold;
-    transition:.3s;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    transition:.4s;
+
 }
+
 
 .btn-primary{
+
     background:var(--primary);
-    color:#fff;
+
+    color:white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
 }
+
 
 .btn-primary:hover{
-    background:var(--primary-dark);
+
+    transform:translateY(-5px);
+
 }
+
 
 .btn-outline{
-    border:2px solid var(--primary);
-    color:var(--primary);
+
+    border:2px solid white;
+
+    color:white;
+
 }
+
 
 .btn-outline:hover{
-    background:var(--primary);
-    color:#fff;
+
+    background:white;
+
+    color:var(--dark);
+
 }
 
-/* Sections */
 
-.section{
-    padding:90px 8%;
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero h1{
+
+    font-size:38px;
+
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:50px;
+
+.hero p{
+
+    font-size:17px;
+
 }
 
-.section-title h2{
-    font-size:40px;
-    color:var(--text);
+
+.hero-logo{
+
+    width:130px;
+
 }
 
-.section-title p{
-    margin-top:10px;
-    color:#777;
-}
-
-/* Gallery */
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:25px;
-}
-
-.gallery-item{
-    overflow:hidden;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.gallery-item img{
-    width:100%;
-    height:320px;
-    object-fit:cover;
-    transition:.5s;
-}
-
-.gallery-item:hover img{
-    transform:scale(1.08);
-}
-
-/* About */
-
-.about-section{
-    background:#fff3f6;
-}
-
-.about-text{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-    line-height:2;
-    font-size:20px;
-}
-
-/* Contact */
-
-.contact-buttons{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:15px;
-}
-
-.contact-btn{
-    padding:15px 35px;
-    border-radius:50px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.whatsapp{
-    background:#25D366;
-}
-
-.call{
-    background:#0d6efd;
-}
-
-.tiktok{
-    background:#000;
-}
-
-.facebook{
-    background:#1877F2;
-}
-
-/* Floating */
-
-.floating-contact{
-    position:fixed;
-    left:20px;
-    bottom:20px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    z-index:999;
-}
-
-.float-btn{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    color:#fff;
-    font-size:22px;
-}
-
-.float-btn.whatsapp{background:#25D366;}
-.float-btn.call{background:#0d6efd;}
-.float-btn.tiktok{background:#000;}
-.float-btn.facebook{background:#1877F2;}
-
-/* Footer */
-
-footer{
-    background:#5d4037;
-    color:#fff;
-    text-align:center;
-    padding:35px;
 }
