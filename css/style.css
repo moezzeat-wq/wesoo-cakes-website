@@ -2,225 +2,294 @@
    WeSoo Cakes - Main Style
 ========================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: 'Cairo', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:'Cairo',sans-serif;
 }
 
-body {
-    background: #fffaf8;
-    color: #333;
-    padding-top: 80px; /* لمنع تداخل القائمة الثابتة مع محتوى الموقع */
+:root{
+    --primary:#d88ba1;
+    --primary-dark:#c96f88;
+    --text:#5d4037;
+    --bg:#fffaf8;
+    --white:#ffffff;
 }
 
-/* --- القائمة العلوية (Navbar) --- */
-header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    background: white;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+body{
+    background:var(--bg);
+    color:#333;
+    overflow-x:hidden;
+    padding-top:90px;
 }
 
-.navbar {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
+/* Navbar */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#fff;
+    z-index:999;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
-.logo {
-    width: 130px;
-    height: auto;
-    display: block;
+.navbar{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
 }
 
-.menu {
-    display: flex;
-    gap: 30px;
+.logo{
+    width:120px;
 }
 
-.menu a {
-    text-decoration: none;
-    color: #444;
-    font-weight: bold;
-    transition: color .3s ease;
+.menu{
+    display:flex;
+    gap:25px;
 }
 
-.menu a:hover {
-    color: #d88ba1;
+.menu a{
+    text-decoration:none;
+    color:#444;
+    font-weight:700;
+    transition:.3s;
 }
 
-/* --- الواجهة الرئيسية (Hero) --- */
-.hero {
-    height: calc(100vh - 80px); /* موازنة الارتفاع بعد إضافة padding للـ body */
-    background: url("../images/hero.jpg") center center/cover no-repeat;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.menu a:hover{
+    color:var(--primary);
 }
 
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, .6);
+/* Hero */
+
+.hero{
+    height:90vh;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    width: 90%;
-    max-width: 700px;
+.hero-slider{
+    position:absolute;
+    width:100%;
+    height:100%;
 }
 
-.hero h1 {
-    font-size: 50px;
-    color: #5d4037;
-    margin-bottom: 20px;
-    font-weight: 800;
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:1s;
 }
 
-.hero p {
-    font-size: 20px;
-    line-height: 1.8;
-    margin-bottom: 35px;
-    color: #4a3b32;
+.slide.active{
+    opacity:1;
 }
 
-/* --- الأزرار (Buttons) --- */
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+.hero-overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,.55);
 }
 
-.btn {
-    padding: 15px 40px;
-    background: #d88ba1;
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(216, 139, 161, 0.3);
-    transition: all .3s ease;
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    width:90%;
+    max-width:700px;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(216, 139, 161, 0.5);
-    background: #cf7a92;
+.hero-logo{
+    width:150px;
+    margin-bottom:20px;
 }
 
-.btn2 {
-    padding: 15px 40px;
-    border: 2px solid #d88ba1;
-    color: #d88ba1;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: all .3s ease;
+.hero h1{
+    font-size:48px;
+    color:var(--text);
+    margin-bottom:20px;
 }
 
-.btn2:hover {
-    background: #d88ba1;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(216, 139, 161, 0.3);
+.hero p{
+    font-size:20px;
+    line-height:2;
+    margin-bottom:35px;
 }
 
-/* --- الأقسام العامة (Sections) --- */
-.section {
-    padding: 80px 8%;
-    scroll-margin-top: 80px; /* تضمن عدم اختفاء عنوان القسم تحت الهيدر عند الانتقال الانسيابي */
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
 }
 
-.section h2 {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 50px;
-    color: #5d4037;
-    position: relative;
+.btn{
+    padding:15px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
 }
 
-/* --- معرض الأعمال (Gallery) --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.btn-primary{
+    background:var(--primary);
+    color:#fff;
 }
 
-.gallery-item {
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
-    background: #white;
+.btn-primary:hover{
+    background:var(--primary-dark);
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 320px; /* تحديد ارتفاع موحد للصور للحفاظ على تناسق الشبكة */
-    object-fit: cover;
-    display: block;
-    transition: transform .4s ease;
+.btn-outline{
+    border:2px solid var(--primary);
+    color:var(--primary);
 }
 
-.gallery-item:hover img {
-    transform: scale(1.06);
+.btn-outline:hover{
+    background:var(--primary);
+    color:#fff;
 }
 
-/* --- من نحن (About) --- */
-.bg-light {
-    background: #fff3f6;
+/* Sections */
+
+.section{
+    padding:90px 8%;
 }
 
-.about-text {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-    font-size: 19px;
-    line-height: 1.9;
-    color: #555;
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
 }
 
-/* --- تواصل معنا (Contact) --- */
-#contact {
-    text-align: center; /* لتوسيط النص وزر الواتساب تلقائياً */
+.section-title h2{
+    font-size:40px;
+    color:var(--text);
 }
 
-.whatsapp-contact-btn {
-    display: inline-block;
-    margin-top: 25px;
-    background: #25D366;
-    color: white;
-    padding: 16px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    transition: all .3s ease;
+.section-title p{
+    margin-top:10px;
+    color:#777;
 }
 
-.whatsapp-contact-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
-    background: #20ba5a;
+/* Gallery */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
 }
 
-/* --- الفوتر (Footer) --- */
-footer {
-    background: #5d4037;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    font-size: 15px;
+.gallery-item{
+    overflow:hidden;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.gallery-item img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+/* About */
+
+.about-section{
+    background:#fff3f6;
+}
+
+.about-text{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    line-height:2;
+    font-size:20px;
+}
+
+/* Contact */
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.contact-btn{
+    padding:15px 35px;
+    border-radius:50px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+.call{
+    background:#0d6efd;
+}
+
+.tiktok{
+    background:#000;
+}
+
+.facebook{
+    background:#1877F2;
+}
+
+/* Floating */
+
+.floating-contact{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:999;
+}
+
+.float-btn{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:#fff;
+    font-size:22px;
+}
+
+.float-btn.whatsapp{background:#25D366;}
+.float-btn.call{background:#0d6efd;}
+.float-btn.tiktok{background:#000;}
+.float-btn.facebook{background:#1877F2;}
+
+/* Footer */
+
+footer{
+    background:#5d4037;
+    color:#fff;
+    text-align:center;
+    padding:35px;
 }
